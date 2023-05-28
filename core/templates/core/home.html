@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content%}
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+        <h1 class="display-4 fw-bold text-body-emphasis">YouthMatch</h1>
+        <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Find your matching Jobs Now!</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a href="{% url 'match' %}"><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Match</button></a> 
+            <a href="{% url 'profile' %}"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Profile</button></a> 
+        </div>
+        </div>
+        <div class="container px-5">
+    <div class="mx-auto justify-content-center mb-5" id="map">{{ map|safe }}</div>
+
+    <script>
+        // Add JavaScript code if needed for custom map functionality
+    </script>   
+        </div>
+    </div>
+{% endblock %}
