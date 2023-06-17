@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+  <main class="d-flex flex-nowrap me-auto">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style=" max-width: 380px;">
+    <a class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+      <!-- <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg> -->
+      <span class="fs-5 fw-semibold">Available Jobs</span>
+    </a>
+    <div class="scrollarea">  
+      <div class="list-group list-group-flush border-bottom">
+        {% for job in jobs %}
+        <a href="{% url 'job' job.name %}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">{{ job.name }}</strong>
+          <!-- <small>{{job.position}}</small> -->
+        </div>
+        <div class="col-10 mb-1 small">{{job.description}}</div>
+      </a>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col">
+  <section class="mx-auto justify-content-center mb-2 mt-3" style=" max-width: 1000px;">
+    <div  id="map">{{ map|safe }}</div>
+  </section>
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mx-auto">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{ job.thumbnail.url }}" style="max-height: 400px; object-fit: contain;" class="d-block mx-lg-auto img-fluid" alt="Image" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{job.name}}</h1>
+        <p class="lead">{{job.description}}</p>
+        <p class="lead">Position: {{job.position}}</p>
+        <p class="lead">Job-Type:
+          {% for job in job.job_type.all %}
+           {{job.type}}
+           {% endfor %}
+        </p>
+        <p class="lead">Address: {{job.Address}}</p>
+        <p class="lead">Contact: {{job.contact_num}}</p>
+        <p class="lead">Email: {{job.email_add}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">View More</button>
+        </div>
+      </div>
+    </div>
+</div>
+</main>
+<style>
+    .scrollarea {
+  overflow-y: auto;
+  max-height: 150vh; /* Adjust the maximum height as needed */
+}
+
+</style>
+{% endblock %}

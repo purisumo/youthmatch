@@ -1,0 +1,26 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content%}
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row mx-auto">
+        <div>
+            {% for field in form %}
+             <div class="col-md-6 mx-auto">
+                <label class="labels"> {{field.label}} </label>
+                {% if field.field.widget.input_type == 'checkbox' %}
+                    {{ field|add_class:'form-check-input' }}
+                    {{ field.label_tag }}
+                {% else %}
+                    {{ field|add_class:'form-control' }}
+                {% endif %}
+            </div>
+             {% endfor  %}
+             <div class="mt-2 mb-2 text-center"><button class="btn btn-primary" type="submit">Save</button></div>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}

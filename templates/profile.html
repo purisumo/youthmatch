@@ -1,14 +1,53 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content%}
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-        <h1 class="display-4 fw-bold text-body-emphasis">YouthMatch</h1>
-        <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Find you matching Jobs Now!</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Match</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="{% url 'change_password' %}">Change password</a></button>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{user.username}}</span><span class="text-black-50"><a href="{% url 'change_password' %}"> Change Password</a> </span><span> </span></div>
         </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="{{user.first_name}}" value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="{{user.last_name}}" value="" disabled></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="{{user.mobile}}" value="" disabled></div>
+                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="{{user.address}}" value="" disabled></div>
+                    <!-- <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="{{user.email}}" value="" disabled></div>
+                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="{{user.education}}" value="" disabled></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="{{user.country}}" value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="{{user.region}}" disabled></div>
+                </div>
+                <a href="{% url 'update_profile' %}"><div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Update Profile</button></div></a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Work Experience</label><textarea class="form-control" placeholder="{{ user.exp }}" disabled>{{ user.exp }}</textarea></div> <br>
+                <div class="col-md-12"><label class="labels">Skills:
+                                                         <ul>
+                                                            {% for skill in user.skills.all %}
+                                                                <li>{{ skill.type }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </label>
+                                                </div>
+            </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 {% endblock %}

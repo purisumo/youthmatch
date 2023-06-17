@@ -6,8 +6,8 @@
         <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Find your matching Jobs Now!</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <a href="{% url 'match' %}"><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Match</button></a> 
-            <a href="{% url 'profile' %}"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Profile</button></a> 
+            <a {% if user.is_authenticated %} href="{% url 'match' %}" {% else %} href="{% url 'login' %}" {% endif %} ><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Match</button></a> 
+            <a {% if user.is_authenticated %} href="{% url 'profile' %}" {% else %} href="{% url 'login' %}" {% endif %} ><button type="button" class="btn btn-outline-secondary btn-lg px-4">Profile</button></a> 
         </div>
         </div>
         <div class="container px-5">

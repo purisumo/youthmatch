@@ -3,107 +3,36 @@
 {% block content %}
   <main class="d-flex flex-nowrap me-auto">
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style=" max-width: 380px;">
-    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+    <a class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
       <!-- <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg> -->
-      <span class="fs-5 fw-semibold">List group</span>
+      <span class="fs-5 fw-semibold">Matching Jobs</span>
     </a>
     <div class="scrollarea">
       <div class="list-group list-group-flush border-bottom">
-        <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+        {% for job in matching_jobs %}
+        <a href="{% url 'job' job.name %}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small>Wed</small>
+          <strong class="mb-1">{{ job.name }}</strong>
+          <!-- <small>{{job.position}}</small> -->
         </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+        <div class="col-10 mb-1 small">{{job.description}}</div>
       </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-      </a>
+      {% endfor %}
       </div>
     </div>
   </div>
   <div class="col">
     <div class="mx-auto mb-1 mt-3">
-        <h1 style="text-align: -webkit-center;"> These are the jobs that matched your skills!</h1>
+      {% if matching_jobs %}
+        <h1 style="text-align: -webkit-center;"> These are the jobs that matched your Skills!</h1>
+      {% else %}
+      <h1 style="text-align: -webkit-center;"> Unfortunately no Job matches your Skills</h1>
+      {% endif %}
     </div>
-  <section class="mx-auto justify-content-center mb-2 mt-3" style=" max-width: 700px;">
+  <section class="mx-auto justify-content-center mb-2 mt-3" style=" max-width: 1000px;">
     <div  id="map">{{ map|safe }}</div>
   </section>
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mx-auto">
+  <!-- <div class="row flex-lg-row-reverse align-items-center g-5 py-5 mx-auto">
       <div class="col-10 col-sm-8 col-lg-6">
         <img src="/static/img/youthmatch.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       </div>
@@ -115,7 +44,7 @@
           <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
         </div>
       </div>
-    </div>
+    </div> -->
 </div>
 </main>
 <style>
